@@ -1,5 +1,9 @@
 function App() {
-  return <div className="bg-black h-4"></div>;
+  return (
+    <div>
+      <p className="text-xl  bg-secondary font-lora">Hello men</p>
+    </div>
+  );
 }
 
 export default App;
