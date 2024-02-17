@@ -2,32 +2,33 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    screens:{
-      sm:"560px",
-      md:"830px",
-      lg: "1430px",
-      xl: "1920px",
+    screens: {
+      sm: '560px',
+      md: '830px',
+      '2md': '1200px',
+      lg: '1430px',
+      xl: '1920px'
     },
     extend: {
-      colors:{
-        secondary: "#168570",
-        white: "#FFFFFF",
-        primary: "#1B1B1B"
+      colors: {
+        secondary: '#168570',
+        white: '#FFFFFF',
+        primary: '#1B1B1B'
       },
-      fontSize:{
-        xs:["14px", "19.6px"],
-        sm: ["16px", "22.4px"],
-        lg: ["50px", "60px"],
-        xl: ["80px", "90px"],
+      fontSize: {
+        xs: ['14px', '19.6px'],
+        sm: ['16px', '22.4px'],
+        lg: ['50px', '60px'],
+        xl: ['80px', '90px']
       }
     },
-    fontFamily:{
-      raleway:[ "Raleway", "sans-serif"],
-      lora:[ "Lora", "serif"]
+    fontFamily: {
+      raleway: ['Raleway', 'sans-serif'],
+      lora: ['Lora', 'serif']
     }
   },
   plugins: []
