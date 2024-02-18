@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     screens: {
+      xs: '320px',
       sm: '560px',
       md: '830px',
       '2md': '1200px',
@@ -20,7 +21,7 @@ module.exports = {
         primary: '#1B1B1B'
       },
       fontSize: {
-        xs: ['14px', '19.6px'],
+        xs: ['15px', '19.6px'],
         sm: ['16px', '22.4px'],
         lg: ['50px', '60px'],
         xl: ['80px', '90px']

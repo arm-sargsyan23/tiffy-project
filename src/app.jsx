@@ -1,23 +1,29 @@
 import { useState } from 'react';
-import {
-  Link,
-  unstable_useViewTransitionState
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CotologMenu from './components/cotolog';
+
+const displayWidth =
+  document.getElementById('root').clientWidth;
 
 function App() {
   const [searchInputValue, setSearchInputValue] =
     useState('');
+
   const [cotogoriesMenu, setCotogoriesMenu] =
-    useState({ isActive: false, name: '' });
+    useState({
+      isActive: false,
+      name: ''
+    });
+
   const [mediaMenu, setMediaMenu] =
     useState(false);
 
   return (
-    <header>
+    <header
+      className={`flex justify-center h-[800px] overflow-hidden`}>
       {/* header */}
-      <div className="w-full min-h-max flex justify-center bg-white border-b-[1px] border-black font-raleway font-normal fixed z-50">
-        <div className="w-[90%] sm:w-[75%] sm:flex sm:justify-between sm:items-center grid grid-rows-2 relative">
+      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center bg-white border-b-[1px] border-black font-raleway font-thin fixed z-50">
+        <div className="w-[90%] sm:w-[75%] sm:flex grid sm:justify-between sm:items-center relative z-20">
           <div className="w-full lg:max-w-max flex ">
             <div className="min-w-max py-8 z-10">
               <img
@@ -26,12 +32,15 @@ function App() {
                 alt="logo"
               />
             </div>
-            <div className="w-full flex justify-end items-center lg:hidden bg-white z-10">
+            <div className="w-full flex justify-end items-center lg:hidden z-10">
               <div
                 onClick={() => {
                   setMediaMenu(!mediaMenu);
-                  cotogoriesMenu
-                    ? setCotogoriesMenu(false)
+                  mediaMenu
+                    ? setCotogoriesMenu({
+                        isActive: false,
+                        name: cotogoriesMenu.name
+                      })
                     : null;
                 }}
                 className="w-[35px] h-[35px] flex justify-center items-center p-[9px] border-primary border-[1px] rounded-full sm:mr-[15px]">
@@ -50,7 +59,7 @@ function App() {
             </div>
           </div>
           <div
-            className={` hidden w-full h-full ${mediaMenu ? '2md:translate-y-[83px]' : '2md:translate-y-[0]'} transition ease-in-out duration-500 2md:absolute 2md:flex items-center justify-center bg-white -z-30             lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary`}>
+            className={` hidden w-full h-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary`}>
             <Link>Главая</Link>
             <Link
               onClick={() => {
@@ -87,10 +96,10 @@ function App() {
             <Link>Контакты</Link>
           </div>
 
-          <div className="flex h-full gap-x-4">
-            <div className="w-full h-full bg-white border-[3px] border-white flex items-center relative">
+          <div className="flex gap-x-4">
+            <div className="w-full flex items-center relative">
               <img
-                className="w-[15px] absolute text-primary right-[13px] top-[30px] sm:top-[30px]"
+                className="w-[15px] absolute text-primary right-[10px]"
                 src="/media/images/search.svg"
                 alt="search icon"
               />
@@ -109,9 +118,51 @@ function App() {
           </div>
         </div>
       </div>
+      <div
+        className={`w-full h-[95%] 2md:h-[70px] bg-white absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${mediaMenu ? 'translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]' : '2md:translate-y-0 -translate-y-[800px]'}`}>
+        <div className="2md:flex grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
+          <Link>Главая</Link>
+          <Link
+            onClick={() => {
+              setCotogoriesMenu({
+                isActive:
+                  cotogoriesMenu.isActive &&
+                  cotogoriesMenu.name ===
+                    'For Men'
+                    ? (cotogoriesMenu.name =
+                        'For Women')
+                    : !cotogoriesMenu.isActive,
+                name: 'For Women'
+              });
+            }}>
+            для Женщин
+          </Link>
+          <Link
+            onClick={() => {
+              setCotogoriesMenu({
+                isActive:
+                  cotogoriesMenu.isActive &&
+                  cotogoriesMenu.name ===
+                    'For Women'
+                    ? (cotogoriesMenu.name =
+                        'For Women')
+                    : !cotogoriesMenu.isActive,
+                name: 'For Men'
+              });
+            }}>
+            для Мужчин
+          </Link>
+          <Link>Новинки</Link>
+          <Link>Скидки</Link>
+          <Link>Контакты</Link>
+        </div>
+      </div>
       <CotologMenu
         name={cotogoriesMenu.name}
         isActive={cotogoriesMenu.isActive}
+        displayWidth={displayWidth}
+        setCotogoriesMenu={setCotogoriesMenu}
+        mediaMenu={mediaMenu}
       />
     </header>
   );
