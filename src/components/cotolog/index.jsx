@@ -1,5 +1,3 @@
-import React from 'react';
-
 function CotologMenu({
   name,
   isActive,
@@ -9,7 +7,7 @@ function CotologMenu({
 }) {
   return (
     <div
-      className={`w-full h-[700px] absolute top-[129px] sm:top-[83px] 2md:top-[69px] lg:top-0 ${mediaMenu ? 'top-[69px]' : null} ${isActive ? `${displayWidth + 16 < 1200 ? 'translate-x-0' : 'translate-y-[83px]'}` : `${displayWidth + 16 < 1200 ? '-translate-x-full' : '-translate-y-full'}`} bg-white transition ease-in-out duration-400 overflow-hidden flex justify-center items-center text-lg 2md:z-10`}>
+      className={`w-full h-[700px] absolute top-[129px] sm:top-[83px] 2md:top-[69px] lg:top-0 ${mediaMenu ? 'top-[69px]' : null} ${isActive ? `${displayWidth + 16 < 1200 ? 'translate-x-0' : 'translate-y-[83px]'}` : `${displayWidth + 16 < 1200 ? '-translate-x-full' : '-translate-y-full'}`} bg-white transition ease-in-out duration-500 overflow-hidden flex justify-center items-center text-lg 2md:z-10`}>
       <div
         onClick={() => {
           setCotogoriesMenu({
