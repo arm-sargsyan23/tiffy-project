@@ -59,8 +59,11 @@ export default function Header() {
           </div>
           <div
             className={` hidden w-full h-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary`}>
-            <Link>Главая</Link>
+            <Link className="hover:text-secondary transition ease-in-out duration-300">
+              Главая
+            </Link>
             <Link
+              className="hover:text-secondary transition ease-in-out duration-300"
               onClick={() => {
                 setCotogoriesMenu({
                   isActive:
@@ -76,6 +79,7 @@ export default function Header() {
               для Женщин
             </Link>
             <Link
+              className="hover:text-secondary transition ease-in-out duration-300"
               onClick={() => {
                 setCotogoriesMenu({
                   isActive:
@@ -90,9 +94,15 @@ export default function Header() {
               }}>
               для Мужчин
             </Link>
-            <Link>Новинки</Link>
-            <Link>Скидки</Link>
-            <Link>Контакты</Link>
+            <Link className="hover:text-secondary transition ease-in-out duration-300">
+              Новинки
+            </Link>
+            <Link className="hover:text-secondary transition ease-in-out duration-300">
+              Скидки
+            </Link>
+            <Link className="hover:text-secondary transition ease-in-out duration-300">
+              Контакты
+            </Link>
           </div>
 
           <div className="flex gap-x-4">
@@ -120,8 +130,11 @@ export default function Header() {
       <div
         className={`w-full h-[95%] 2md:h-[70px] bg-white absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${mediaMenu ? 'translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]' : '2md:translate-y-0 -translate-y-[800px]'}`}>
         <div className="2md:flex grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
-          <Link>Главая</Link>
+          <Link className="hover:text-secondary transition ease-in-out duration-300">
+            Главая
+          </Link>
           <Link
+            className="hover:text-secondary transition ease-in-out duration-300"
             onClick={() => {
               setCotogoriesMenu({
                 isActive:
@@ -137,6 +150,7 @@ export default function Header() {
             для Женщин
           </Link>
           <Link
+            className="hover:text-secondary transition ease-in-out duration-300"
             onClick={() => {
               setCotogoriesMenu({
                 isActive:
@@ -151,9 +165,15 @@ export default function Header() {
             }}>
             для Мужчин
           </Link>
-          <Link>Новинки</Link>
-          <Link>Скидки</Link>
-          <Link>Контакты</Link>
+          <Link className="hover:text-secondary transition ease-in-out duration-300">
+            Новинки
+          </Link>
+          <Link className="hover:text-secondary transition ease-in-out duration-300">
+            Скидки
+          </Link>
+          <Link className="hover:text-secondary transition ease-in-out duration-300">
+            Контакты
+          </Link>
         </div>
       </div>
       <CotologMenu
