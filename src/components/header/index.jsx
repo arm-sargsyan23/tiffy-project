@@ -1,179 +1,66 @@
-import { Link } from 'react-router-dom';
-import CotologMenu from '../cotolog';
-import { useState } from 'react';
+import CotologMenu from "./cotolog";
+import { useState } from "react";
+import NavBar from "./nav-bar";
+import SearchInput from "./input";
 
-const displayWidth =
-  document.getElementById('root').clientWidth;
+const displayWidth = document.getElementById("root").clientWidth;
 
 export default function Header() {
-  const [searchInputValue, setSearchInputValue] =
-    useState('');
+  const [cotogoriesMenu, setCotogoriesMenu] = useState({
+    isActive: false,
+    name: ""
+  });
 
-  const [cotogoriesMenu, setCotogoriesMenu] =
-    useState({
-      isActive: false,
-      name: ''
-    });
+  const [navBar, setNavBar] = useState(false);
 
-  const [mediaMenu, setMediaMenu] =
-    useState(false);
   return (
-    <header
-      className={`flex justify-center h-[800px] overflow-hidden`}>
+    <header className={`flex justify-center h-[800px] overflow-hidden`}>
       {/* header */}
       <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center bg-white border-b-[1px] border-black font-raleway font-thin fixed z-50">
         <div className="w-[90%] sm:w-[75%] sm:flex grid sm:justify-between sm:items-center relative z-20">
           <div className="w-full lg:max-w-max flex ">
             <div className="min-w-max py-8 z-10">
-              <img
-                className="sm:w-[110px] w-[100px] h-[34px]"
-                src="/media/images/logo.svg"
-                alt="logo"
-              />
+              <img className="sm:w-[110px] w-[100px] h-[34px]" src="/media/images/logo.svg" alt="logo" />
             </div>
             <div className="w-full flex justify-end items-center lg:hidden z-10">
               <div
                 onClick={() => {
-                  setMediaMenu(!mediaMenu);
-                  mediaMenu
+                  setNavBar(!navBar);
+                  navBar
                     ? setCotogoriesMenu({
                         isActive: false,
                         name: cotogoriesMenu.name
                       })
                     : null;
                 }}
-                className="w-[35px] h-[35px] flex justify-center items-center p-[9px] border-primary border-[1px] rounded-full sm:mr-[15px]">
-                {mediaMenu ? (
-                  <p className="text-md flex justify-center items-center">
-                    -
-                  </p>
-                ) : (
-                  <img
-                    className="w-full h-full"
-                    src="/media/images/burger.svg"
-                    alt="burger"
-                  />
-                )}
+                className="w-[35px] h-[35px] flex justify-center items-center p-[9px] border-primary border-[1px] rounded-full sm:mr-[15px]"
+              >
+                {/* stexel uxelu ban ka */}
+                <img
+                  className="w-full h-full"
+                  src={`${navBar ? "/media/images/burger-cancel.svg" : "media/images/burger.svg"}`}
+                  alt="burger"
+                />
               </div>
             </div>
           </div>
-          <div
-            className={` hidden w-full h-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary`}>
-            <Link className="hover:text-secondary transition ease-in-out duration-300">
-              Главая
-            </Link>
-            <Link
-              className="hover:text-secondary transition ease-in-out duration-300"
-              onClick={() => {
-                setCotogoriesMenu({
-                  isActive:
-                    cotogoriesMenu.isActive &&
-                    cotogoriesMenu.name ===
-                      'For Men'
-                      ? (cotogoriesMenu.name =
-                          'For Women')
-                      : !cotogoriesMenu.isActive,
-                  name: 'For Women'
-                });
-              }}>
-              для Женщин
-            </Link>
-            <Link
-              className="hover:text-secondary transition ease-in-out duration-300"
-              onClick={() => {
-                setCotogoriesMenu({
-                  isActive:
-                    cotogoriesMenu.isActive &&
-                    cotogoriesMenu.name ===
-                      'For Women'
-                      ? (cotogoriesMenu.name =
-                          'For Women')
-                      : !cotogoriesMenu.isActive,
-                  name: 'For Men'
-                });
-              }}>
-              для Мужчин
-            </Link>
-            <Link className="hover:text-secondary transition ease-in-out duration-300">
-              Новинки
-            </Link>
-            <Link className="hover:text-secondary transition ease-in-out duration-300">
-              Скидки
-            </Link>
-            <Link className="hover:text-secondary transition ease-in-out duration-300">
-              Контакты
-            </Link>
+          <div className="hidden w-full h-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary">
+            <NavBar cotogoriesMenu={cotogoriesMenu} setCotogoriesMenu={setCotogoriesMenu} />
           </div>
 
           <div className="flex gap-x-4">
             <div className="w-full flex items-center relative">
-              <img
-                className="w-[15px] absolute text-primary right-[10px]"
-                src="/media/images/search.svg"
-                alt="search icon"
-              />
-              <input
-                className="sm:w-[200px] w-full border-[1px] block border-black rounded-full text-xs outline-none px-[16px] pr-[30px] py-[6px]"
-                value={searchInputValue}
-                onChange={(e) => {
-                  setSearchInputValue(
-                    e.target.value
-                  );
-                }}
-                type="text"
-                placeholder="Поиск"
-              />
+              <img className="w-[15px] absolute text-primary right-[10px]" src="/media/images/search.svg" alt="search icon" />
+              <SearchInput />
             </div>
           </div>
         </div>
       </div>
       <div
-        className={`w-full h-[95%] 2md:h-[70px] bg-white absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${mediaMenu ? 'translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]' : '2md:translate-y-0 -translate-y-[800px]'}`}>
+        className={`w-full h-[95%] 2md:h-[70px] bg-secondary absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "2md:translate-y-0 -translate-y-[800px]"}`}
+      >
         <div className="2md:flex grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
-          <Link className="hover:text-secondary transition ease-in-out duration-300">
-            Главая
-          </Link>
-          <Link
-            className="hover:text-secondary transition ease-in-out duration-300"
-            onClick={() => {
-              setCotogoriesMenu({
-                isActive:
-                  cotogoriesMenu.isActive &&
-                  cotogoriesMenu.name ===
-                    'For Men'
-                    ? (cotogoriesMenu.name =
-                        'For Women')
-                    : !cotogoriesMenu.isActive,
-                name: 'For Women'
-              });
-            }}>
-            для Женщин
-          </Link>
-          <Link
-            className="hover:text-secondary transition ease-in-out duration-300"
-            onClick={() => {
-              setCotogoriesMenu({
-                isActive:
-                  cotogoriesMenu.isActive &&
-                  cotogoriesMenu.name ===
-                    'For Women'
-                    ? (cotogoriesMenu.name =
-                        'For Women')
-                    : !cotogoriesMenu.isActive,
-                name: 'For Men'
-              });
-            }}>
-            для Мужчин
-          </Link>
-          <Link className="hover:text-secondary transition ease-in-out duration-300">
-            Новинки
-          </Link>
-          <Link className="hover:text-secondary transition ease-in-out duration-300">
-            Скидки
-          </Link>
-          <Link className="hover:text-secondary transition ease-in-out duration-300">
-            Контакты
-          </Link>
+          <NavBar cotogoriesMenu={cotogoriesMenu} setCotogoriesMenu={setCotogoriesMenu} />
         </div>
       </div>
       <CotologMenu
@@ -181,7 +68,7 @@ export default function Header() {
         isActive={cotogoriesMenu.isActive}
         displayWidth={displayWidth}
         setCotogoriesMenu={setCotogoriesMenu}
-        mediaMenu={mediaMenu}
+        navBar={navBar}
       />
     </header>
   );
