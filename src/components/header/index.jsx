@@ -1,12 +1,10 @@
-import CotologMenu from "./cotolog";
+import MenuForSubCategory from "./SubCategory";
 import { useState } from "react";
 import NavBar from "./nav-bar";
 import SearchInput from "./input";
 
-const displayWidth = document.getElementById("root").clientWidth;
-
 export default function Header() {
-  const [cotogoriesMenu, setCotogoriesMenu] = useState({
+  const [menuForSubCategory, setMenuForSubCategory] = useState({
     isActive: false,
     name: ""
   });
@@ -27,15 +25,14 @@ export default function Header() {
                 onClick={() => {
                   setNavBar(!navBar);
                   navBar
-                    ? setCotogoriesMenu({
+                    ? setMenuForSubCategory({
                         isActive: false,
-                        name: cotogoriesMenu.name
+                        name: menuForSubCategory.name
                       })
                     : null;
                 }}
                 className="w-[35px] h-[35px] flex justify-center items-center p-[9px] border-primary border-[1px] rounded-full sm:mr-[15px]"
               >
-                {/* stexel uxelu ban ka */}
                 <img
                   className="w-full h-full"
                   src={`${navBar ? "/media/images/burger-cancel.svg" : "media/images/burger.svg"}`}
@@ -45,7 +42,7 @@ export default function Header() {
             </div>
           </div>
           <div className="hidden w-full h-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary">
-            <NavBar cotogoriesMenu={cotogoriesMenu} setCotogoriesMenu={setCotogoriesMenu} />
+            <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
           </div>
 
           <div className="flex gap-x-4">
@@ -57,17 +54,16 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`w-full h-[95%] 2md:h-[70px] bg-secondary absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "2md:translate-y-0 -translate-y-[800px]"}`}
+        className={`w-full h-[95%] 2md:h-[70px] absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "2md:translate-y-0 -translate-y-[800px]"}`}
       >
         <div className="2md:flex grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
-          <NavBar cotogoriesMenu={cotogoriesMenu} setCotogoriesMenu={setCotogoriesMenu} />
+          <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
         </div>
       </div>
-      <CotologMenu
-        name={cotogoriesMenu.name}
-        isActive={cotogoriesMenu.isActive}
-        displayWidth={displayWidth}
-        setCotogoriesMenu={setCotogoriesMenu}
+      <MenuForSubCategory
+        name={menuForSubCategory.name}
+        isActive={menuForSubCategory.isActive}
+        setMenuForSubCategory={setMenuForSubCategory}
         navBar={navBar}
       />
     </header>
