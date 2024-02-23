@@ -1,5 +1,5 @@
 import MenuForSubCategory from "./SubCategory";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./nav-bar";
 import SearchInput from "./input";
 
@@ -11,8 +11,24 @@ export default function Header() {
 
   const [navBar, setNavBar] = useState(false);
 
+  function handleClientWidth() {
+    setNavBar(false);
+    setMenuForSubCategory({
+      isActive: false,
+      name: ""
+    });
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleClientWidth);
+
+    return () => {
+      window.removeEventListener("resize", handleClientWidth);
+    };
+  }, []);
+
   return (
-    <header className={`flex justify-center h-[800px] overflow-hidden`}>
+    <header className={`flex justify-center`}>
       {/* header */}
       <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center bg-white border-b-[1px] border-black font-raleway font-thin fixed z-50">
         <div className="w-[90%] sm:w-[75%] sm:flex grid sm:justify-between sm:items-center relative z-20">
@@ -47,14 +63,13 @@ export default function Header() {
 
           <div className="flex gap-x-4">
             <div className="w-full flex items-center relative">
-              <img className="w-[15px] absolute text-primary right-[10px]" src="/media/images/search.svg" alt="search icon" />
               <SearchInput />
             </div>
           </div>
         </div>
       </div>
       <div
-        className={`w-full h-[95%] 2md:h-[70px] absolute lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "2md:translate-y-0 -translate-y-[800px]"}`}
+        className={`w-full h-[95%] 2md:h-[60px] bg-white fixed lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "2md:translate-y-0 -translate-y-[800px]"}`}
       >
         <div className="2md:flex grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
           <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
