@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className={`flex justify-center`}>
       {/* header */}
-      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center bg-white border-b-[1px] border-black font-raleway font-thin fixed z-50">
+      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center bg-white border-b-[1px] border-primary font-raleway fixed z-50">
         <div className="w-[90%] sm:w-[75%] sm:flex grid sm:justify-between sm:items-center relative z-20">
           <div className="w-full lg:max-w-max flex ">
             <div className="min-w-max py-8 z-10">
@@ -69,18 +69,13 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`w-full h-[95%] 2md:h-[60px] bg-white fixed lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "2md:translate-y-0 -translate-y-[800px]"}`}
+        className={`w-full h-full bg-white 2md:h-[60px] fixed lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "-translate-y-full"}`}
       >
-        <div className="2md:flex grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
+        <div className="2md:flex bg-white grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
           <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
         </div>
       </div>
-      <MenuForSubCategory
-        name={menuForSubCategory.name}
-        isActive={menuForSubCategory.isActive}
-        setMenuForSubCategory={setMenuForSubCategory}
-        navBar={navBar}
-      />
+      <MenuForSubCategory menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} navBar={navBar} />
     </header>
   );
 }
