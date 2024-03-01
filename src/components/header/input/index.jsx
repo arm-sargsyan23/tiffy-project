@@ -7,6 +7,7 @@ export default function SearchInput() {
       <img className="w-[15px] absolute text-primary right-[10px]" src="/media/images/search.svg" alt="search icon" />
       <input
         className="sm:w-[200px] w-full border-[1px] block border-black rounded-full text-xs outline-none px-[16px] pr-[30px] py-[6px]"
+        name="search"
         value={searchInputValue}
         onChange={e => {
           setSearchInputValue(e.target.value);

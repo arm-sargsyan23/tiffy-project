@@ -11,6 +11,16 @@ export default function Header() {
 
   const [navBar, setNavBar] = useState(false);
 
+  function handleMenuForSubCategory() {
+    setNavBar(!navBar);
+    navBar
+      ? setMenuForSubCategory({
+          isActive: false,
+          name: menuForSubCategory.name
+        })
+      : null;
+  }
+
   function handleClientWidth() {
     setNavBar(false);
     setMenuForSubCategory({
@@ -30,23 +40,15 @@ export default function Header() {
   return (
     <header className={`flex justify-center`}>
       {/* header */}
-      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center bg-white border-b-[1px] border-primary font-raleway fixed z-50">
+      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center flex-wrap bg-white border-b-[1px] border-primary font-raleway fixed z-50">
         <div className="w-[90%] sm:w-[75%] sm:flex grid sm:justify-between sm:items-center relative z-20">
-          <div className="w-full lg:max-w-max flex ">
+          <div className="w-full lg:max-w-max flex">
             <div className="min-w-max py-8 z-10">
               <img className="sm:w-[110px] w-[100px] h-[34px]" src="/media/images/logo.svg" alt="logo" />
             </div>
             <div className="w-full flex justify-end items-center lg:hidden z-10">
               <div
-                onClick={() => {
-                  setNavBar(!navBar);
-                  navBar
-                    ? setMenuForSubCategory({
-                        isActive: false,
-                        name: menuForSubCategory.name
-                      })
-                    : null;
-                }}
+                onClick={handleMenuForSubCategory}
                 className="w-[35px] h-[35px] flex justify-center items-center p-[9px] border-primary border-[1px] rounded-full sm:mr-[15px]"
               >
                 <img
@@ -69,13 +71,13 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`w-full h-full bg-white 2md:h-[60px] fixed lg:hidden flex justify-center transition ease-in-out duration-300 2md:z-20 ${navBar ? "translate-y-[120px] sm:translate-y-[82px] 2md:translate-y-[82px]" : "-translate-y-full"}`}
+        className={`w-full bg-white fixed lg:hidden grid justify-items-center transition-all ease-in-out duration-300 z-50 top-[129px] sm:top-[83px] ${navBar ? "xs:grid-rows-[700px] 2md:grid-rows-[55px]" : "grid-rows-[0px]"}`}
       >
-        <div className="2md:flex bg-white grid place-content-evenly justify-items-center w-[80%] 2md:w-[50%] h-[70%] 2md:h-full 2md:justify-between 2md:items-center text-xs">
+        <div className="2md:flex bg-white grid place-content-evenly justify-items-center w-[50%] max-2md:h-[60%] 2md:justify-between 2md:items-center text-xs overflow-hidden">
           <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
         </div>
       </div>
-      <MenuForSubCategory menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} navBar={navBar} />
+      <MenuForSubCategory menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
     </header>
   );
 }

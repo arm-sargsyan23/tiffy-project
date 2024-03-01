@@ -1,6 +1,28 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
+  const [navBarItems] = useState([
+    {
+      id: 1,
+      name: "Главная"
+    },
+    { id: 2, name: "для Женщин", clickedItem: { gender: "For Women" } },
+    { id: 3, name: "для Мужчин", clickedItem: { gender: "For Men" } },
+    {
+      id: 4,
+      name: "Новинки"
+    },
+    {
+      id: 5,
+      name: "Скидки"
+    },
+    {
+      id: 6,
+      name: "Контакты"
+    }
+  ]);
+
   function isGendersMenuActive(compared, replaceable) {
     setMenuForSubCategory({
       isActive:
@@ -13,26 +35,35 @@ export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
 
   return (
     <>
-      <Link className="hover:text-secondary transition ease-in-out duration-300">Главная</Link>
-      <Link
-        className="hover:text-secondary transition ease-in-out duration-300"
-        onClick={() => {
-          isGendersMenuActive("For Men", "For Women");
-        }}
-      >
-        для Женщин
-      </Link>
-      <Link
-        className="hover:text-secondary transition ease-in-out duration-300"
-        onClick={() => {
-          isGendersMenuActive("For Women", "For Men");
-        }}
-      >
-        для Мужчин
-      </Link>
-      <Link className="hover:text-secondary transition ease-in-out duration-300">Новинки</Link>
-      <Link className="hover:text-secondary transition ease-in-out duration-300">Скидки</Link>
-      <Link className="hover:text-secondary transition ease-in-out duration-300">Контакты</Link>
+      {navBarItems.map(({ id, name, clickedItem }) =>
+        clickedItem ? (
+          clickedItem.gender === "For Women" ? (
+            <Link
+              key={id}
+              className="hover:text-secondary transition ease-in-out duration-300"
+              onClick={() => {
+                isGendersMenuActive("For Men", "For Women");
+              }}
+            >
+              {name}
+            </Link>
+          ) : (
+            <Link
+              key={id}
+              className="hover:text-secondary transition ease-in-out duration-300"
+              onClick={() => {
+                isGendersMenuActive("For Women", "For Men");
+              }}
+            >
+              {name}
+            </Link>
+          )
+        ) : (
+          <Link key={id} className="hover:text-secondary transition ease-in-out duration-300">
+            {name}
+          </Link>
+        )
+      )}
     </>
   );
 }
