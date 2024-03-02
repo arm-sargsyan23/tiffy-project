@@ -17,7 +17,8 @@ export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
     },
     {
       id: 5,
-      name: "Скидки"
+      name: "Скидки",
+      path: "/discount"
     },
     {
       id: 6,
