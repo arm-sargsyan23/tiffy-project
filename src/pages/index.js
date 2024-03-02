@@ -1,1 +1,8 @@
 export { default as HomePage } from "./home-page";
+export { default as DiscountPage } from "./discounts-page";
+export { default as ForWomenPage } from "./for-women-page";
+export { default as ForMenPage } from "./for-men-page";
+export { default as NewProductsPage } from "./new-products-page";
+export { default as ProductPage } from "./product-page";
+export { default as SearchPage } from "./search-page";
+export { default as ContactsPage } from "./contacts-page";

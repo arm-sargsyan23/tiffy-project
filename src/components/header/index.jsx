@@ -1,7 +1,11 @@
-import MenuForSubCategory from "./SubCategory";
-import { useState, useEffect } from "react";
+/* react */
+import { useState } from "react";
+/* header components */
 import NavBar from "./nav-bar";
 import SearchInput from "./input";
+import MenuForSubCategory from "./SubCategory";
+/* hooks */
+import useHandleClientWidth from "./hooks/useHandleClientWidth/index";
 
 export default function Header() {
   const [menuForSubCategory, setMenuForSubCategory] = useState({
@@ -10,6 +14,8 @@ export default function Header() {
   });
 
   const [navBar, setNavBar] = useState(false);
+
+  const HandleResize = useHandleClientWidth({ setNavBar, setMenuForSubCategory });
 
   function handleMenuForSubCategory() {
     setNavBar(!navBar);
@@ -21,21 +27,7 @@ export default function Header() {
       : null;
   }
 
-  function handleClientWidth() {
-    setNavBar(false);
-    setMenuForSubCategory({
-      isActive: false,
-      name: ""
-    });
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize", handleClientWidth);
-
-    return () => {
-      window.removeEventListener("resize", handleClientWidth);
-    };
-  }, []);
+  HandleResize();
 
   return (
     <header className={`flex justify-center`}>
@@ -59,7 +51,7 @@ export default function Header() {
               </div>
             </div>
           </div>
-          <div className="hidden w-full h-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary">
+          <div className="hidden w-full transition ease-in-out duration-400 items-center justify-center lg:translate-y-0 lg:static lg:flex gap-x-16 text-xs text-primary">
             <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
           </div>
 
@@ -70,11 +62,13 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div
-        className={`w-full bg-white fixed lg:hidden grid justify-items-center transition-all ease-in-out duration-300 z-50 top-[129px] sm:top-[83px] ${navBar ? "xs:grid-rows-[700px] 2md:grid-rows-[55px]" : "grid-rows-[0px]"}`}
-      >
-        <div className="2md:flex bg-white grid place-content-evenly justify-items-center w-[50%] max-2md:h-[60%] 2md:justify-between 2md:items-center text-xs overflow-hidden">
-          <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
+      <div className={`w-full bg-white fixed lg:hidden grid justify-items-center z-50 top-[129px] sm:top-[83px]`}>
+        <div
+          className={`bg-white w-[60%] grid text-xs transition-all ease-in-out duration-500 ${navBar ? "grid-rows-[91vh] 2md:grid-rows-[55px]" : "grid-rows-[0px]"}`}
+        >
+          <div className="bg-white max-h-max overflow-hidden content-start gap-y-6 max-2md:pt-[40px] w-full grid justify-items-center 2md:grid-cols-6">
+            <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
+          </div>
         </div>
       </div>
       <MenuForSubCategory menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />

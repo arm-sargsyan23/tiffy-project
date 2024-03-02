@@ -12,7 +12,7 @@
 
 export default function MenuForSubCategory({ menuForSubCategory, setMenuForSubCategory }) {
   return (
-    <div className="w-full bg-white top-[129px] sm:top-[83px] 2md:top-[133px] lg:top-[83px] z-50 absolute">
+    <div className="w-full bg-white top-[129px] sm:top-[83px] 2md:top-[138px] lg:top-[83px] z-50 absolute">
       {/* <Swiper
         modules={[Navigation]}
         navigation={{ nextEl: ".next-btn", prevEl: ".prev-btn", clickable: true }}
@@ -66,7 +66,7 @@ export default function MenuForSubCategory({ menuForSubCategory, setMenuForSubCa
         <div className="overflow-hidden">
           <div
             onClick={() => {
-              setMenuForSubCategory({ isActive: false });
+              setMenuForSubCategory({ isActive: false, name: menuForSubCategory.name });
             }}
             className="w-[35px] border-[1px] border-primary rounded-full p-2"
           >
