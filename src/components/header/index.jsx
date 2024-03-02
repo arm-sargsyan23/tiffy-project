@@ -33,7 +33,7 @@ export default function Header() {
     <header className={`flex justify-center`}>
       {/* header */}
       <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center flex-wrap bg-white border-b-[1px] border-primary font-raleway fixed z-50">
-        <div className="w-[90%] sm:w-[75%] sm:flex grid sm:justify-between sm:items-center relative z-20">
+        <div className="w-[90%] sm:w-[80%] sm:flex grid sm:justify-between sm:items-center relative z-20">
           <div className="w-full lg:max-w-max flex">
             <div className="min-w-max py-8 z-10">
               <img className="sm:w-[110px] w-[100px] h-[34px]" src="/media/images/logo.svg" alt="logo" />
