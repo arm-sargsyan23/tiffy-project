@@ -8,7 +8,8 @@ import {
   NewProductsPage,
   ProductPage,
   SearchPage,
-  ContactsPage
+  ContactsPage,
+  CategoryPage
 } from "./pages";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/category" element={<CategoryPage />} />
         </Routes>
       </Layout>
     </>

@@ -6,3 +6,4 @@ export { default as NewProductsPage } from "./new-products-page";
 export { default as ProductPage } from "./product-page";
 export { default as SearchPage } from "./search-page";
 export { default as ContactsPage } from "./contacts-page";
+export { default as CategoryPage } from "./category-page";
