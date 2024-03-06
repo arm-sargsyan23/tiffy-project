@@ -3,7 +3,7 @@ import { useState } from "react";
 /* header components */
 import NavBar from "./nav-bar";
 import SearchInput from "./input";
-import MenuForSubCategory from "./SubCategory";
+import MenuForSubCategory from "./sub-category";
 /* hooks */
 import useHandleClientWidth from "./hooks/useHandleClientWidth/index";
 
