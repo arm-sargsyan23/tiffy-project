@@ -32,8 +32,8 @@ export default function Header() {
   return (
     <header className={`flex justify-center`}>
       {/* header */}
-      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center flex-wrap bg-white border-b-[1px] border-primary font-raleway fixed z-50">
-        <div className="w-[90%] sm:w-[85%] 2md:w-[80%] sm:flex grid sm:justify-between sm:items-center relative z-20">
+      <div className="w-full min-h-max sm:pb-0 pb-4 flex justify-center flex-wrap bg-white border-b-[1px] border-primary font-raleway fixed z-[9999]">
+        <div className="w-[90%] sm:w-[85%] 2md:w-[80%] sm:flex grid sm:justify-between sm:items-center relative">
           <div className="w-full lg:max-w-max flex">
             <div className="min-w-max py-8 z-10">
               <img className="sm:w-[110px] w-[100px] h-[34px]" src="/media/images/logo.svg" alt="logo" />
@@ -62,9 +62,9 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className={`w-full bg-white fixed lg:hidden grid justify-items-center z-50 top-[129px] sm:top-[83px]`}>
+      <div className={`w-full bg-white fixed lg:hidden grid justify-items-center z-10 top-[129px] sm:top-[83px]`}>
         <div
-          className={`bg-white w-[60%] grid text-xs transition-all ease-in-out duration-500 ${navBar ? "grid-rows-[calc(100vh-83px)] 2md:grid-rows-[55px]" : "grid-rows-[0px]"}`}
+          className={`bg-white w-[60%] grid text-xs transition-all ease-in-out duration-500 ${navBar ? "grid-rows-[calc(100vh-129px)] sm:grid-rows-[calc(100vh-83px)] 2md:grid-rows-[55px]" : "grid-rows-[0px]"}`}
         >
           <div className="bg-white overflow-hidden content-start gap-y-6 max-2md:mt-[40px] w-full grid justify-items-center 2md:grid-cols-6">
             <NavBar menuForSubCategory={menuForSubCategory} setMenuForSubCategory={setMenuForSubCategory} />
