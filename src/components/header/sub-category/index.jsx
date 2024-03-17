@@ -105,7 +105,7 @@ export default function MenuForSubCategory({ menuForSubCategory, setMenuForSubCa
   return (
     <div className="w-full bg-white top-[129px] sm:top-[83px] 2md:top-[138px] lg:top-[83px] z-50 absolute">
       <div
-        className={`grid justify-items-center transition-all duration-300 ease-in-out overflow-hidden ${menuForSubCategory?.isActive ? "grid-rows-[calc(100vh-129px)] sm:grid-rows-[calc(100vh-83px)] 2md:grid-rows-[60vh]" : "grid-rows-[0px]"}`}
+        className={`grid justify-items-center transition-all duration-300 ease-in-out overflow-hidden ${menuForSubCategory?.isActive ? "grid-rows-[calc(100vh-129px)] sm:grid-rows-[calc(100vh-83px)] 2md:grid-rows-[70vh]" : "grid-rows-[0px]"}`}
       >
         {/* responsivetion for 2md and higher */}
         <SubCategoryForBigDisplays categories={categories} handleSubCategoriesActive={handleSubCategoriesActive} />
