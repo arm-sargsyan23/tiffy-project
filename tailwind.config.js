@@ -25,7 +25,7 @@ module.exports = {
         black: "#131313"
       },
       fontSize: {
-        xs: ["15px", "19.6px"],
+        xs: ["14px", "19.6px"],
         sm: ["16px", "22.4px"],
         lg: ["50px", "60px"],
         xl: ["80px", "90px"]

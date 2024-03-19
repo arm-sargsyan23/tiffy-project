@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
-  const [navBarItems] = useState([
+  const navBarItems = [
     {
       id: 1,
       name: "Главная",
@@ -25,7 +24,7 @@ export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
       name: "Контакты",
       path: "/contacts"
     }
-  ]);
+  ];
 
   function isGendersMenuActive(compared, replaceable) {
     setMenuForSubCategory({
@@ -43,7 +42,7 @@ export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
         clickedItem ? (
           clickedItem.gender === "For Women" ? (
             <Link
-              to={path ? path : null}
+              to={path && path}
               key={id}
               className="hover:text-secondary transition ease-in-out duration-300 2md:relative 2md:top-[18px] lg:top-0 overflow-hidden max-2md:h-[40px]"
               onClick={() => {
@@ -54,7 +53,7 @@ export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
             </Link>
           ) : (
             <Link
-              to={path ? path : null}
+              to={path && path}
               key={id}
               className="hover:text-secondary transition ease-in-out duration-300 2md:relative 2md:top-[18px] lg:top-0 overflow-hidden max-2md:h-[40px]"
               onClick={() => {
@@ -66,7 +65,7 @@ export default function NavBar({ menuForSubCategory, setMenuForSubCategory }) {
           )
         ) : (
           <Link
-            to={path ? path : null}
+            to={path && path}
             key={id}
             className="hover:text-secondary transition ease-in-out duration-300 2md:relative 2md:top-[18px] lg:top-0 overflow-hidden max-2md:h-[40px]"
           >
