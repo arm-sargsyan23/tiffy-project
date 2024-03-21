@@ -11,7 +11,7 @@ import "swiper/css/scrollbar";
 /* react */
 import { Link } from "react-router-dom";
 
-export default function SwiperBrands({ subCategoriesActive, handleSubCategoriesActive }) {
+export default function SwiperSubCategories({ subCategoriesActive, handleSubCategoriesActive }) {
   return (
     <div className={`bg-white row-start-2 row-end-9 col-span-10 ${subCategoriesActive[0]?.categoryId === 5 && "hidden"}`}>
       <Swiper
