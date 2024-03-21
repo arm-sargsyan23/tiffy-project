@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 /* components */
-import SwiperBrands from "./swiper-brands";
+import SwiperSubCategories from "./swiper-sub-categories/index";
 import BrandsButtons from "./brands-btns";
 
 export default function SubCategoryForSmallDisplays({
@@ -45,20 +45,16 @@ export default function SubCategoryForSmallDisplays({
                   )}
                 </div>
                 {id < categories.length ? (
-                  <SwiperBrands
+                  <SwiperSubCategories
                     handleSubCategoriesActive={handleSubCategoriesActive}
-                    categories={categories}
-                    i={i}
-                    id={id}
-                    subCategoriesActiveForPhone={subCategoriesActiveForPhone}
+                    subCategories={categories[i].subCategories}
+                    isActiveSubCategoriesActiveForPhone={subCategoriesActiveForPhone === id}
                   />
                 ) : (
                   <BrandsButtons
                     handleSubCategoriesActive={handleSubCategoriesActive}
-                    subCategoriesActiveForPhone={subCategoriesActiveForPhone}
-                    i={i}
-                    id={id}
-                    categories={categories}
+                    subCategories={categories[i].subCategories}
+                    isActiveSubCategoriesActiveForPhone={subCategoriesActiveForPhone === id}
                   />
                 )}
               </div>
