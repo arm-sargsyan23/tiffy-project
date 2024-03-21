@@ -14,7 +14,6 @@ export default function SwiperSubCategories({ subCategories, isActiveSubCategori
   return (
     <Swiper
       className={`w-full bg-white grid transition-all ease-in-out duration-300 overflow-hidden text-xs ${isActiveSubCategoriesActiveForPhone ? "grid-rows-[240px]" : "grid-rows-[0px]"}`}
-      slidesPerView={"auto"}
     >
       {subCategories?.map(({ subId, subTitle }) => (
         <SwiperSlide key={`subCategoryForPhone${subId}`}>
