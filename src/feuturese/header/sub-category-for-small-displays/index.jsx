@@ -1,6 +1,5 @@
 /* react */
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 /* components */
 import SwiperSubCategories from "./swiper-sub-categories/index";
@@ -14,7 +13,7 @@ export default function SubCategoryForSmallDisplays({
 }) {
   const [subCategoriesActiveForPhone, setSubCategoriesActiveForPhone] = useState(null);
   return (
-    <div className="w-[85%] max-2md:grid hidden bg-white">
+    <div className="w-[85%] max-2md:grid hidden bg-white overflow-y-auto">
       <div className="w-full grid content-start gap-4 font-raleway">
         {/* back icon */}
         <div
