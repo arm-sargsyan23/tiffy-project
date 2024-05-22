@@ -1,9 +1,8 @@
 /* react */
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 /* components */
-import SwiperBrands from "./swiper-brands";
+import SwiperSubCategories from "./swiper-sub-categories/index";
 import BrandsButtons from "./brands-btns";
 
 export default function SubCategoryForSmallDisplays({
@@ -14,7 +13,7 @@ export default function SubCategoryForSmallDisplays({
 }) {
   const [subCategoriesActiveForPhone, setSubCategoriesActiveForPhone] = useState(null);
   return (
-    <div className="w-[85%] max-2md:grid hidden bg-white">
+    <div className="w-[85%] max-2md:grid hidden bg-white overflow-y-auto no-scrollbar">
       <div className="w-full grid content-start gap-4 font-raleway">
         {/* back icon */}
         <div
@@ -45,20 +44,16 @@ export default function SubCategoryForSmallDisplays({
                   )}
                 </div>
                 {id < categories.length ? (
-                  <SwiperBrands
+                  <SwiperSubCategories
                     handleSubCategoriesActive={handleSubCategoriesActive}
-                    categories={categories}
-                    i={i}
-                    id={id}
-                    subCategoriesActiveForPhone={subCategoriesActiveForPhone}
+                    subCategories={categories[i].subCategories}
+                    isActiveSubCategoriesActiveForPhone={subCategoriesActiveForPhone === id}
                   />
                 ) : (
                   <BrandsButtons
                     handleSubCategoriesActive={handleSubCategoriesActive}
-                    subCategoriesActiveForPhone={subCategoriesActiveForPhone}
-                    i={i}
-                    id={id}
-                    categories={categories}
+                    subCategories={categories[i].subCategories}
+                    isActiveSubCategoriesActiveForPhone={subCategoriesActiveForPhone === id}
                   />
                 )}
               </div>
