@@ -63,7 +63,7 @@ export default function Header() {
         </div>
       </div>
       <div
-        className={`w-full bg-white fixed lg:hidden grid justify-items-center z-10 top-[129px] sm:top-[83px] ${menuForSubCategory ? "overflow-y-auto" : "overscroll-none"}`}
+        className={`w-full bg-white fixed lg:hidden grid justify-items-center z-10 top-[129px] sm:top-[83px] ${menuForSubCategory ? "overflow-y-auto no-scrollbar" : "overscroll-none"}`}
       >
         <div
           className={`bg-white w-[60%] grid text-xs transition-all ease-in-out duration-500 ${navBar ? "grid-rows-[calc(100vh-129px)] sm:grid-rows-[calc(100vh-83px)] 2md:grid-rows-[55px]" : "grid-rows-[0px]"}`}

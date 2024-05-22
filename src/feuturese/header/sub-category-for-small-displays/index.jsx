@@ -13,7 +13,7 @@ export default function SubCategoryForSmallDisplays({
 }) {
   const [subCategoriesActiveForPhone, setSubCategoriesActiveForPhone] = useState(null);
   return (
-    <div className="w-[85%] max-2md:grid hidden bg-white overflow-y-auto">
+    <div className="w-[85%] max-2md:grid hidden bg-white overflow-y-auto no-scrollbar">
       <div className="w-full grid content-start gap-4 font-raleway">
         {/* back icon */}
         <div
